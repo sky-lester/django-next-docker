@@ -18,6 +18,16 @@ services:
     env_file:
       - ./backend/.env
 
+  nextapp:
+    container_name: nextapp
+    build: ./frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    command: sh -c "npm install && npm run dev"
+
 volumes:
   postgres_data:
   backend:
+  frontend:
