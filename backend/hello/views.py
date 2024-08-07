@@ -4,9 +4,13 @@ from rest_framework.response import Response
 from rest_framework import status
 from .models import Hello
 from .serializers import HelloSerializer
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("<h1>Hello World! API Django!</h1>")
 
 @api_view(['GET', 'POST'])
-def index(request):
+def hellos(request):
     if request.method == 'GET':
         hello = Hello.objects.all()
         serializer = HelloSerializer(hello, many=True)
