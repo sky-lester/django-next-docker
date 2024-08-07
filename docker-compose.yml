@@ -6,7 +6,7 @@ services:
     env_file:
       - ./backend/.env
 
-  web:
+  backend:
     build: ./backend
     command: sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
@@ -18,8 +18,7 @@ services:
     env_file:
       - ./backend/.env
 
-  nextapp:
-    container_name: nextapp
+  frontend:
     build: ./frontend
     volumes:
       - ./frontend:/app
